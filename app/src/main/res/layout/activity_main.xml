@@ -1,82 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    tools:context=".MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="io.github.pengdst.simplemvvm.MainViewModel" />
+    </data>
 
     <LinearLayout
-        android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        tools:context=".MainActivity">
 
-        <EditText
-            android:id="@+id/edt_alas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:hint="alas"/>
-
-        <EditText
-            android:id="@+id/edt_tinggi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:hint="tinggi"/>
-
-        <Button
-            android:id="@+id/btn_hitung_luas"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:text="hitung"
-            android:layout_gravity="center"/>
-
-        <TextView
-            android:id="@+id/tv_hasil_luas"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:text="Hasil"
-            android:textSize="30sp"/>
-
-        <EditText
-            android:id="@+id/edt_panjang"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:hint="panjang"/>
+            android:layout_margin="30dp"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/edt_lebar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:hint="lebar"/>
+            <EditText
+                android:id="@+id/edt_panjang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:text="@={viewModel.etPanjang}"
+                android:hint="panjang" />
 
-        <Button
-            android:id="@+id/btn_hitung_keliling"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:text="hitung"
-            android:layout_gravity="center"/>
+            <EditText
+                android:id="@+id/edt_lebar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:text="@={viewModel.etLebar}"
+                android:hint="lebar" />
 
-        <TextView
-            android:id="@+id/tv_hasil_keliling"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:text="Hasil"
-            android:textSize="30sp"/>
+            <Button
+                android:id="@+id/btn_hitung_keliling"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="hitung keliling"
+                android:onClick="@{()->viewModel.hitungKelilingPersegi(context)}"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:id="@+id/tv_hasil_keliling"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="@{viewModel.keliling}"
+                android:textSize="30sp" />
+
+            <Button
+                android:id="@+id/btn_hitung_luas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:onClick="@{()->viewModel.hitungLuasPersegi(context)}"
+                android:text="hitung luas"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:id="@+id/tv_hasil_luas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="@{viewModel.luas}"
+                android:textSize="30sp" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-</LinearLayout>
+</layout>
