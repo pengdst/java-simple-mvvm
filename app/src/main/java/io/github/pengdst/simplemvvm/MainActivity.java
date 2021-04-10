@@ -12,28 +12,32 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import io.github.pengdst.simplemvvm.databinding.ActivityMainBinding;
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText edtAlas,edtTinggi,edtPanjang,edtLebar;
     private Button btnHitungLuas,btnHitungKeliling;
     private TextView tvHasilLuas,tvHasilKeliling;
+    private ActivityMainBinding binding;
     private MainViewModel viewModel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        edtAlas = findViewById(R.id.edt_alas);
-        edtTinggi = findViewById(R.id.edt_tinggi);
-        edtPanjang = findViewById(R.id.edt_panjang);
-        edtLebar= findViewById(R.id.edt_lebar);
+        edtAlas = binding.edtAlas;
+        edtTinggi = binding.edtTinggi;
+        edtPanjang = binding.edtPanjang;
+        edtLebar= binding.edtLebar;
 
-        tvHasilLuas = findViewById(R.id.tv_hasil_luas);
-        tvHasilKeliling = findViewById(R.id.tv_hasil_keliling);
+        tvHasilLuas = binding.tvHasilLuas;
+        tvHasilKeliling = binding.tvHasilKeliling;
 
-        btnHitungKeliling = findViewById(R.id.btn_hitung_keliling);
-        btnHitungLuas = findViewById(R.id.btn_hitung_luas);
+        btnHitungKeliling = binding.btnHitungKeliling;
+        btnHitungLuas = binding.btnHitungLuas;
 
         initViewModel();
     }
